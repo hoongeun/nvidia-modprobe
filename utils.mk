@@ -32,8 +32,8 @@
 # values if they are not exported by the caller
 ##############################################################################
 
-CC                    ?= gcc
-CXX                   ?= g++
+CC                    ?= clang
+CXX                   ?= clang++
 LD                    ?= ld
 AR                    ?= ar
 # only set these warnings if CFLAGS is unset
@@ -42,6 +42,7 @@ CFLAGS                ?= -Wall
 CFLAGS                += -fno-strict-aliasing -fno-omit-frame-pointer -Wformat=2
 CC_ONLY_CFLAGS        ?= -Wstrict-prototypes -Wold-style-definition
 CXX_ONLY_CFLAGS       ?=
+CLANG_FLAGS           = -Wno-unused-command-line-argument
 LDFLAGS               ?=
 BIN_LDFLAGS           ?=
 EXTRA_CFLAGS          ?=
@@ -57,6 +58,8 @@ HOST_LD               ?= $(LD)
 HOST_CFLAGS           ?= $(CFLAGS)
 HOST_CC_ONLY_CFLAGS   ?=
 HOST_CXX_ONLY_CFLAGS  ?=
+HOST_CXX_ONLY_CFLAGS  ?=
+HOST_CFLAGS           += $(CLANG_FLAGS)
 HOST_LDFLAGS          ?= $(LDFLAGS)
 HOST_BIN_LDFLAGS      ?=
 
